@@ -9,6 +9,10 @@ pub trait CoordCompare<T> {
     fn compare(&self, other: &T) -> bool;
 }
 
+pub trait CoordOpposite {
+    fn opposite(&self) -> Self;
+}
+
 impl CoordCompare<Vector3D> for Vector3D {
     fn compare(&self, other: &Vector3D) -> bool {
         self.x - other.x < std::f64::EPSILON
@@ -22,6 +26,16 @@ impl CoordCompare<Point3D> for Point3D {
         self.x - other.x < std::f64::EPSILON
             && self.y - other.y < std::f64::EPSILON
             && self.z - other.z < std::f64::EPSILON
+    }
+}
+
+impl CoordOpposite for Vector3D {
+    fn opposite(&self) -> Vector3D {
+        Vector3D {
+            x: 0.0 - self.x,
+            y: 0.0 - self.y,
+            z: 0.0 - self.z,
+        }
     }
 }
 

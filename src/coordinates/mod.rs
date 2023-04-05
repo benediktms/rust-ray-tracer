@@ -88,4 +88,14 @@ mod tests {
         assert_eq!(v2.y, -2.0);
         assert_eq!(v2.z, 1.6);
     }
+
+    #[test]
+    fn should_be_able_to_get_the_opposite_vector() {
+        let v1 = Vector3D::new(1.0, -2.0, 3.0);
+        let opposite = v1.opposite();
+
+        assert_eq!(opposite.x, -1.0);
+        assert_eq!(opposite.y, 2.0);
+        assert_eq!(opposite.z, -3.0);
+    }
 }

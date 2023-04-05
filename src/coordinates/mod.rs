@@ -47,33 +47,25 @@ mod tests {
     fn adding_points_to_vectors_should_work() {
         let v1 = Vector3D::new(4.3, -4.2, 3.1);
         let p1 = Point3D::new(4.3, -4.2, 3.1);
+        let v2 = v1 + p1;
 
-        let p2 = v1 + p1;
-        assert_eq!(p2.x, 8.6);
-        assert_eq!(p2.y, -8.4);
-        assert_eq!(p2.z, 6.2);
+        assert_eq!(v2, Vector3D::new(8.6, -8.4, 6.2));
     }
 
     #[test]
     fn adding_vectors_to_points_should_work() {
         let v1 = Vector3D::new(4.3, -4.2, 3.1);
         let p1 = Point3D::new(4.3, -4.2, 3.1);
-
         let p2 = p1 + v1;
-        assert_eq!(p2.x, 8.6);
-        assert_eq!(p2.y, -8.4);
-        assert_eq!(p2.z, 6.2);
+        assert_eq!(p2, Point3D::new(8.6, -8.4, 6.2));
     }
 
     #[test]
     fn subtracting_points_should_give_a_new_vector() {
         let p1 = Point3D::new(4.3, -4.2, 3.1);
         let p2 = Point3D::new(2.3, -2.2, 1.5);
-
         let v1 = p1 - p2;
-        assert_eq!(v1.x, 2.0);
-        assert_eq!(v1.y, -2.0);
-        assert_eq!(v1.z, 1.6);
+        assert_eq!(v1, Vector3D::new(2.0, -2.0, 1.6));
     }
 
     #[test]
@@ -82,9 +74,7 @@ mod tests {
         let v1 = Vector3D::new(2.3, -2.2, 1.5);
 
         let v2 = p1 - v1;
-        assert_eq!(v2.x, 2.0);
-        assert_eq!(v2.y, -2.0);
-        assert_eq!(v2.z, 1.6);
+        assert_eq!(v2, Vector3D::new(2.0, -2.0, 1.6));
     }
 
     #[test]
@@ -92,9 +82,7 @@ mod tests {
         let v1 = Vector3D::new(1.0, -2.0, 3.0);
         let opposite = v1.opposite();
 
-        assert_eq!(opposite.x, -1.0);
-        assert_eq!(opposite.y, 2.0);
-        assert_eq!(opposite.z, -3.0);
+        assert_eq!(opposite, Vector3D::new(-1.0, 2.0, -3.0));
     }
 
     #[test]

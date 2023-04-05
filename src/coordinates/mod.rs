@@ -108,4 +108,14 @@ mod tests {
         assert_eq!(v3, Vector3D::new(0.5, -1.0, 1.5));
         assert_eq!(v4, Vector3D::new(3.0, -6.0, 9.0));
     }
+
+    #[test]
+    fn should_be_able_to_divide_vectors() {
+        let v1 = Vector3D::new(1.0, -2.0, 3.0);
+        let v2 = v1 / 2;
+        let v3 = v1 / 0.5;
+
+        assert_eq!(v2, Vector3D::new(0.5, -1.0, 1.5));
+        assert_eq!(v3, Vector3D::new(2.0, -4.0, 6.0));
+    }
 }

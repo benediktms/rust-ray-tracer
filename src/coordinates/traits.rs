@@ -1,4 +1,4 @@
-use std::ops::{Add, Mul, Sub};
+use std::ops::{Add, Div, Mul, Sub};
 
 use crate::{Point3D, Vector3D};
 
@@ -117,6 +117,32 @@ impl Mul<u64> for Vector3D {
             x: self.x * num as f64,
             y: self.y * num as f64,
             z: self.z * num as f64,
+        }
+    }
+}
+
+// TODO: This could potentially lead to an overflow error
+impl Div<f64> for Vector3D {
+    type Output = Vector3D;
+
+    fn div(self, num: f64) -> Self::Output {
+        Vector3D {
+            x: self.x / num,
+            y: self.y / num,
+            z: self.z / num,
+        }
+    }
+}
+
+// TODO: This could potentially lead to an overflow error
+impl Div<u64> for Vector3D {
+    type Output = Vector3D;
+
+    fn div(self, num: u64) -> Self::Output {
+        Vector3D {
+            x: self.x / num as f64,
+            y: self.y / num as f64,
+            z: self.z / num as f64,
         }
     }
 }

@@ -4,8 +4,6 @@ mod traits;
 pub use structs::*;
 pub use traits::*;
 
-// this trait can also be implemented to compare Vector3D and Point3D
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -97,5 +95,17 @@ mod tests {
         assert_eq!(opposite.x, -1.0);
         assert_eq!(opposite.y, 2.0);
         assert_eq!(opposite.z, -3.0);
+    }
+
+    #[test]
+    fn should_be_able_to_multiply_vectors() {
+        let v1 = Vector3D::new(1.0, -2.0, 3.0);
+        let v2 = v1 * 3.5;
+        let v3 = v1 * 0.5;
+        let v4 = v1 * 3;
+
+        assert_eq!(v2, Vector3D::new(3.5, -7.0, 10.5));
+        assert_eq!(v3, Vector3D::new(0.5, -1.0, 1.5));
+        assert_eq!(v4, Vector3D::new(3.0, -6.0, 9.0));
     }
 }

@@ -2,8 +2,10 @@ use std::ops::{Add, Sub};
 
 use crate::{Point3D, Vector3D};
 
-// this trait can also be implemented to compare Vector3D and Point3D
 pub trait CoordCompare<T> {
+    /// structs of the same trait can be compared using the `PartialEq` and `PartialOrd` traits
+    /// but when comparing strucsts of different types, e.g. `Vector3D` and `Point3D`, the `compare` method
+    /// should be used
     fn compare(&self, other: &T) -> bool;
 }
 

@@ -40,7 +40,9 @@ mod tests {
         assert!(p1.compare(&p2));
         assert!(!v3.compare(&v1));
         assert!(!p3.compare(&p1));
-        // assert!(!v1.compare(&p1));
+
+        assert_eq!(&v1, &v1);
+        assert_eq!(&p1, &p1);
     }
 
     #[test]

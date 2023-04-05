@@ -106,4 +106,23 @@ mod tests {
         assert_eq!(v2, Vector3D::new(0.5, -1.0, 1.5));
         assert_eq!(v3, Vector3D::new(2.0, -4.0, 6.0));
     }
+
+    #[test]
+    fn should_be_able_to_calculate_the_maginitude_of_a_vector() {
+        let v1 = Vector3D::new(1.0, 0.0, 0.0);
+        let mag1 = v1.magnitude();
+        assert_eq!(mag1, 1.0);
+
+        let v2 = Vector3D::new(0.0, 0.0, 1.0);
+        let mag2 = v2.magnitude();
+        assert_eq!(mag2, 1.0);
+
+        let v3 = Vector3D::new(1.0, 2.0, 3.0);
+        let mag3 = v3.magnitude();
+        assert_eq!(mag3, 14.0_f64.sqrt());
+
+        let v4 = Vector3D::new(-1.0, -2.0, -3.0);
+        let mag4 = v4.magnitude();
+        assert_eq!(mag4, 14.0_f64.sqrt());
+    }
 }

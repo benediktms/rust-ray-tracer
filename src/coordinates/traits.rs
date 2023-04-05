@@ -9,8 +9,12 @@ pub trait CoordCompare<T> {
     fn compare(&self, other: &T) -> bool;
 }
 
-pub trait CoordOpposite {
+pub trait Opposite {
     fn opposite(&self) -> Self;
+}
+
+pub trait Magnitude {
+    fn magnitude(&self) -> f64;
 }
 
 impl CoordCompare<Vector3D> for Vector3D {
@@ -29,7 +33,7 @@ impl CoordCompare<Point3D> for Point3D {
     }
 }
 
-impl CoordOpposite for Vector3D {
+impl Opposite for Vector3D {
     fn opposite(&self) -> Vector3D {
         Vector3D {
             x: 0.0 - self.x,
@@ -95,7 +99,6 @@ impl Point3D {
     }
 }
 
-// TODO: This could potentially lead to an overflow error
 impl Mul<f64> for Vector3D {
     type Output = Vector3D;
 
@@ -108,7 +111,6 @@ impl Mul<f64> for Vector3D {
     }
 }
 
-// TODO: This could potentially lead to an overflow error
 impl Mul<u64> for Vector3D {
     type Output = Vector3D;
 
@@ -121,7 +123,6 @@ impl Mul<u64> for Vector3D {
     }
 }
 
-// TODO: This could potentially lead to an overflow error
 impl Div<f64> for Vector3D {
     type Output = Vector3D;
 
@@ -134,7 +135,6 @@ impl Div<f64> for Vector3D {
     }
 }
 
-// TODO: This could potentially lead to an overflow error
 impl Div<u64> for Vector3D {
     type Output = Vector3D;
 
@@ -144,5 +144,11 @@ impl Div<u64> for Vector3D {
             y: self.y / num as f64,
             z: self.z / num as f64,
         }
+    }
+}
+
+impl Magnitude for Vector3D {
+    fn magnitude(&self) -> f64 {
+        (self.x.powi(2) + self.y.powi(2) + self.z.powi(2)).sqrt()
     }
 }
